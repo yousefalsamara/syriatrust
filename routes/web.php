@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/i', 'HomeController@i');
+Route::resource("/syriatrust",'SyriatrustController');
+Route::get('/contact_us','HomeController@contact_us')->name('contact_us');
+Route::get('/reload-captcha', [\App\Http\Controllers\SyriatrustController::class, 'reloadCaptcha']);

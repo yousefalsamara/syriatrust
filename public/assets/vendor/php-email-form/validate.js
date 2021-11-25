@@ -56,29 +56,43 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
+
       if( response.ok ) {
         return response.text()
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+        return response.json();
       }
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
+      if(data.errors){
+        Object.entries(data.errors).forEach(([key,value])=> {
+          displayError(thisForm,value)
+        });
+      }
+
+
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        // throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action);
       }
     })
     .catch((error) => {
-      displayError(thisForm, error);
+      displayErrors(thisForm, error);
     });
   }
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
     thisForm.querySelector('.error-message').innerHTML = error;
+    thisForm.querySelector('.error-message').classList.add('d-block');
+  }
+  function displayErrors() {
+
+    thisForm.querySelector('.loading').classList.remove('d-block');
+    thisForm.querySelector('.error-message').innerHTML += '<br>' + error;
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
