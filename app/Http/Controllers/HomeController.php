@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Governorate;
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -39,10 +41,46 @@ class HomeController extends Controller
         return view('layouts/app');
     }
 
+
+    public function storeContact(Request $request)
+    {
+
+        $request->validate([
+
+            'captcha' => 'required|captcha',
+            'name'=>'required',
+            'subject'=>'required',
+            'mobile'=>'required|numeric',
+            'message'=>'required'
+
+
+        ]);
+
+        $Contact=new Contact();
+        $Contact->fill($request->all());
+
+        $Contact->save();
+        return "OK";
+        //
+    }
+
+    public function showNews($id)
+    {
+        $News=News::find($id);
+        return view("show",compact('News'));
+    }
+
+
     public function contact_us()
     {
        $governorate=Governorate::all();
 
         return view('createcontact',compact('governorate'));
+    }
+
+    public function reloadCaptcha() {
+        return response()->json(['captcha' => captcha_img()]);
+
+        
     }
 }

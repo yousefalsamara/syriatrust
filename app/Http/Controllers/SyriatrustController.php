@@ -42,45 +42,45 @@ class SyriatrustController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-
-        $request->validate([
-
-            'captcha' => 'required|captcha',
-            'name'=>'required',
-            'subject'=>'required',
-            'mobile'=>'required|numeric',
-            'message'=>'required'
-
-
-        ]);
-
-
-
-
-
-      $Contact=new Contact();
-      $Contact->fill($request->all());
-
-      $Contact->save();
-      return "OK";
-        //
-    }
-    public function reloadCaptcha() {
-        return response()->json(['captcha' => captcha_img()]);
-    }
+//    public function store(Request $request)
+//    {
+//
+//        $request->validate([
+//
+//            'captcha' => 'required|captcha',
+//            'name'=>'required',
+//            'subject'=>'required',
+//            'mobile'=>'required|numeric',
+//            'message'=>'required'
+//
+//
+//        ]);
+//
+//
+//
+//
+//
+//      $Contact=new Contact();
+//      $Contact->fill($request->all());
+//
+//      $Contact->save();
+//      return "OK";
+//        //
+//    }
+//    public function reloadCaptcha() {
+//        return response()->json(['captcha' => captcha_img()]);
+//    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $News=News::find($id);
-        return view("show",compact('News'));
-    }
+//    public function show($id)
+//    {
+//        $News=News::find($id);
+//        return view("show",compact('News'));
+//    }
 
     /**
      * Show the form for editing the specified resource.

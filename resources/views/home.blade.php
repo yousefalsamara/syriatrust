@@ -22,7 +22,7 @@
 
 
                                 </p>
-                                <a href="{{ route('syriatrust.show',$n->id)  }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
+                                <a href="{{ url('home/news/' .$n->id)  }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                                     More</a>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                 <div class="portfolio-links">
                                     <a href="{{asset('/storage/'.$n->image)}}"  data-gallery="portfolioGallery"
                                        class="portfolio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    <a href="{{ route('syriatrust.show',$n->id)  }}" title="More Details"><i class="bi bi-link"></i></a>
+                                    <a href="{{ url('home/news/' .$n->id)  }}" title="More Details"><i class="bi bi-link"></i></a>
                                 </div>
                             </div>
                         </div>

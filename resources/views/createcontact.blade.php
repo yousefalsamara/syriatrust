@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-                    <form action="{{ route('syriatrust.store') }}" method="post" role="form" class="php-email-form"  enctype="multipart/form-data">
+                    <form action="{{ url('contact_us') }}" method="post" role="form" class="php-email-form"  enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 form-group">
@@ -114,7 +114,7 @@
 
 
                             <div class="col-lg-6 form-group">
-                                <input type="email" class="form-control" name="e-mail" id="e-mail" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="e_mail" id="e_mail" placeholder="Your Email" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -184,7 +184,8 @@
 @section('script')
 
     <script type="text/javascript">
-        $('#reload').click(function () {
+
+         $('#reload').click(function () {
             $.ajax({
                 type: 'GET',
                 url: '{{ url("reload-captcha") }}',

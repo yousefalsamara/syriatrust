@@ -48,6 +48,25 @@
                 <i class="bi bi-person"></i><a href="{{ route('login') }}">login</a>
                 <i class="bi bi-house-door"></i><a href="{{ route('register') }}"> register</a>
    @else
+                @if(Auth::user()->isAdmin())
+{{--                <i class="bi bi-person"></i>{{ Auth::user()->name  }}--}}
+
+                    <a href="{{url('adminpermissions')}}" style="background: #428bca;  border: 0; padding: 10px 30px; color: #fff; transition: 0.4s;" role="button" aria-pressed="true"> admin</a>
+
+                @endif
+{{--                <i class="bi bi-phone-fill phone-icon"></i>--}}
+
+{{--                <a href="{{ route('logout') }}"--}}
+{{--                   onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                    {{ __('Logout') }}--}}
+{{--                </a>--}}
+
+{{--                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--                    @csrf--}}
+{{--                </form>--}}
+
+
                 <i class="bi bi-person"></i>{{ Auth::user()->name }}
                 <i class="bi bi-phone-fill phone-icon"></i>
                 <a href="{{ route('logout') }}"
