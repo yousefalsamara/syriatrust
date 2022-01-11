@@ -45,8 +45,8 @@
     <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
             @guest
-                <i class="bi bi-person"></i><a href="{{ route('login') }}">login</a>
-                <i class="bi bi-house-door"></i><a href="{{ route('register') }}"> register</a>
+                <i class="bi bi-person"></i><a href="{{ route('login') }}">{{__('navbar.login')}}</a>
+                <i class="bi bi-house-door"></i><a href="{{ route('register') }}"> {{__('navbar.register')}}</a>
    @else
                 @if(Auth::user()->isAdmin())
 {{--                <i class="bi bi-person"></i>{{ Auth::user()->name  }}--}}
@@ -72,7 +72,7 @@
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('navbar.Logout') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -175,8 +175,8 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <div class="logo me-auto">
-            <h1><a href="index.html">syriatrust</a></h1>
+        <div >
+            <h1><a href="{{ route('home')}}" >{{__('navbar.trust')}}</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -191,8 +191,24 @@
 
         </div>
         <nav id="navbar" class="navbar">
+
+
             <ul>
-                <li class="dropdown"><a href="#"><span>Who We Are</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>{{__('navbar.lang')}}</span> <i class="bi bi-chevron-down"></i> </a>
+                    <ul>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+
+
+
+                <li class="dropdown"><a href="#"><span>{{__('navbar.WHO_WE_ARE')}}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -205,7 +221,7 @@
                             </ul>
                         </li>
                     </ul>
-                <li class="dropdown"><a href="#"><span>OUR IMPACT</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>{{__('navbar.OUR_IMPACT')}}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -219,7 +235,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>MEDIA LIBRARY</span> <i class="bi bi-chevron-down"></i></a>
+
+
+                <li class="dropdown"><a href="#"><span>{{__('navbar.MEDIA_LIBRARY')}}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -232,9 +250,9 @@
                             </ul>
                         </li>
                     </ul>
-                <li><a class="nav-link scrollto" href="#portfolio">NEWS</a></li>
-                <li><a class="nav-link scrollto" href="#team">WORK WITH US</a></li>
-                <li class="dropdown"><a href="#"><span>WAYS TO GIVE</span> <i class="bi bi-chevron-down"></i></a>
+                <li><a class="nav-link scrollto" href="#portfolio">{{__('navbar.NEWS')}}</a></li>
+                <li><a class="nav-link scrollto" href="#team">{{__('navbar.WORK_WITH_US')}}</a></li>
+                <li class="dropdown"><a href="#"><span>{{__('navbar.WAYS_TO_GIVE')}}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -251,8 +269,12 @@
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="{{ route('contact_us')}}">CONTACT US</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('contact_us')}}">{{__('navbar.contact_us')}}</a></li>
+
+
             </ul>
+
+
             <i class="bi bi-list mobile-nav-toggle"></i>
 
 
@@ -273,12 +295,12 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-info">
-                    <h3>الأمانة السورية</h3>
+                    <h3>{{__('navbar.syria_trust')}}</h3>
                     <p>
                        دمشق,باب شرقي  <br>
                          جادة محمد زهير شمس الدين<br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@syriatrust.com<br>
+                        <strong>{{__('navbar.phone')}}:</strong> +1 5589 55488 55<br>
+                        <strong class="bi bi-envelope"></strong> info@syriatrust.com<br>
                     </p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -292,20 +314,20 @@
 
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>{{__("navbar.our_servers")}}</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">About Us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Contact  Us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Work With Us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{__('navbar.about_as')}}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{__('navbar.contact_us')}}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{__('navbar.WORK_WITH_US')}}</a></li>
 
                     </ul>
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>News Letter</h4>
-                    <p> Join our newsletter and never miss out on new news and event</p>
+                    <h4>{{__('navbar.news_letter')}}</h4>
+                    <p>{{__('navbar.l')}}</p>
                     <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                        <input type="email" name="email"><input type="submit" value="{{__('navbar.s')}}">
                     </form>
 
                 </div>
@@ -316,7 +338,7 @@
 
     <div class="container">
         <div class="copyright">
-            <strong><span>All copyrights reserved - Syria Trust for Development 2021 </span></strong>
+            <strong><span> {{__('navbar.vr')}}</span></strong>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

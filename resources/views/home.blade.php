@@ -16,15 +16,17 @@
                     @foreach($News  as $n)
                         <div class="carousel-item @if($i==0) active @endif"
                              style="background-image:url('/storage/{{$n->image}}');">
+                            <div class="carousel-container">
                             <div class="carousel-content container">
-                                <h2 class="animate__animated animate__fadeInDown">{{Str::limit($n->title, 60, $end='.......')}} </h2>
-                                <p class="animate__animated animate__fadeInUp">{{Str::limit($n->describtion, 50, $end='.......')}}
+                                <h2 class="animate__animated animate__fadeInDown text-center" >{{Str::limit($n->title, 60, $end='.......')}} </h2>
+                                <p class="animate__animated animate__fadeInUp text-center">{{Str::limit($n->describtion, 50, $end='.......')}}
 
 
                                 </p>
                                 <a href="{{ url('home/news/' .$n->id)  }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                                     More</a>
                             </div>
+                        </div>
                         </div>
                         @php($i++)
                     @endforeach
@@ -94,7 +96,7 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="section-title">
-                <h2>News</h2>
+                <h2>{{__('navbar.news')}}</h2>
                 <p></p>
             </div>
 
@@ -243,7 +245,7 @@
 
         {{--            </div>--}}
 
-        {{--        </div>--}}
+                </div>
     </section>
 
 
@@ -258,7 +260,7 @@
                         <i class="bi bi-simple-smile" style="color: #20b38e;"></i>
                         <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1"
                               class="purecounter"></span>
-                        <p>Staff</p>
+                        <p>{{__('navbar.Staff')}}</p>
                     </div>
                 </div>
 
@@ -267,7 +269,7 @@
                         <i class="bi bi-document-folder" style="color: #c042ff;"></i>
                         <span data-purecounter-start="0" data-purecounter-end="8000000" data-purecounter-duration="1"
                               class="purecounter"></span>
-                        <p>Hours of volum</p>
+                        <p>{{__('navbar.Hours_of_volum')}}</p>
                     </div>
                 </div>
 
@@ -276,7 +278,7 @@
                         <i class="bi bi-live-support" style="color: #46d1ff;"></i>
                         <span data-purecounter-start="0" data-purecounter-end="+18" data-purecounter-duration="1"
                               class="purecounter"></span>
-                        <p>Years</p>
+                        <p>{{__('navbar.year')}}</p>
                     </div>
                 </div>
 

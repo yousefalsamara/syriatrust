@@ -5,9 +5,9 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>News</h2>
+                <h2>{{__('navbar.news')}}</h2>
                 <ol>
-                    <li><a href="{{ route('home')}}" >Home</a></li>
+                    <li><a href="{{ route('home')}}" >{{__('navbar.home')}}</a></li>
 
                 </ol>
             </div>

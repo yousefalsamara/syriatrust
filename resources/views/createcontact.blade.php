@@ -181,8 +181,8 @@
 
 
 @endsection
-@section('script')
 
+@section('script')
     <script type="text/javascript">
 
          $('#reload').click(function () {

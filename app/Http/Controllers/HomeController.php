@@ -83,4 +83,8 @@ class HomeController extends Controller
 
         
     }
+
+    public function testlang(){
+        return view('testlangview');
+    }
 }
